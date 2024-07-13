@@ -8,7 +8,7 @@ try {
   console.log("Database Connected Successfully");
 } catch (err) {
   console.log("Database Not Connected");
-}*/
+}
 
 const mongoose = require("mongoose");
 
@@ -25,5 +25,5 @@ mongoose.connect(remoteDbUrl, {
 })
 .catch((err) => {
   console.log("Database Not Connected", err);
-});
+});*/
 
