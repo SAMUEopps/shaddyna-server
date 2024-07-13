@@ -1,8 +1,8 @@
-import { Router } from "express";
-const router = Router();
-import brainTreeController from "../controller/braintree";
+const express = require("express");
+const router = express.Router();
+const brainTreeController = require("../controller/braintree");
 
 router.post("/braintree/get-token", brainTreeController.ganerateToken);
 router.post("/braintree/payment", brainTreeController.paymentProcess);
 
-export default router;
+module.exports = router;
