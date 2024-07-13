@@ -1,8 +1,8 @@
-var braintree = require("braintree");
+import { BraintreeGateway, Environment } from "braintree";
 require("dotenv").config();
 
-var gateway = new braintree.BraintreeGateway({
-  environment: braintree.Environment.Sandbox,
+var gateway = new BraintreeGateway({
+  environment: Environment.Sandbox,
   merchantId: process.env.BRAINTREE_MERCHANT_ID,
   publicKey: process.env.BRAINTREE_PUBLIC_KEY,
   privateKey: process.env.BRAINTREE_PRIVATE_KEY,
@@ -46,4 +46,4 @@ class brainTree {
 }
 
 const brainTreeController = new brainTree();
-module.exports = brainTreeController;
+export default brainTreeController;
