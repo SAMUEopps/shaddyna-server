@@ -1,4 +1,4 @@
-var braintree = require("braintree");
+/*var braintree = require("braintree");
 require("dotenv").config();
 
 var gateway = new braintree.BraintreeGateway({
@@ -46,4 +46,4 @@ class brainTree {
 }
 
 const brainTreeController = new brainTree();
-module.exports = brainTreeController;
+module.exports = brainTreeController;*/
