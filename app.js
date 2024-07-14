@@ -55,10 +55,26 @@ mongoose
 // Middleware
 app.use(morgan("dev"));
 app.use(cookieParser());
-app.use(cors());
+//app.use(cors());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
+// CORS Configuration
+const allowedOrigins = ['http://localhost:3000', 'https://shaddyna-client.onrender.com'];
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (like mobile apps or curl requests)
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true,
+}));
+
 
 // Routes
 app.use("/api", authRouter);
