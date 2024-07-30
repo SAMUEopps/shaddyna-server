@@ -61,11 +61,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 // CORS Configuration
-<<<<<<< HEAD
 const allowedOrigins = ['http://192.168.0.109:3000','http://localhost:3000', 'https://shaddyna-client.onrender.com'];
-=======
-const allowedOrigins = ['http://localhost:3001', 'https://shaddyna-client.onrender.com'];
->>>>>>> origin/main
 app.use(cors({
   origin: function (origin, callback) {
     // Allow requests with no origin (like mobile apps or curl requests)
