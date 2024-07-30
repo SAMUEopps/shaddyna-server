@@ -9,6 +9,10 @@ try {
 } catch (err) {
   console.log("Database Not Connected");
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
 const mongoose = require("mongoose");
 
 // Replace the following with your actual MongoDB connection string
@@ -24,4 +28,9 @@ mongoose.connect(remoteDbUrl, {
 })
 .catch((err) => {
   console.log("Database Not Connected", err);
+<<<<<<< HEAD
 });*/
+=======
+});*/
+
+>>>>>>> origin/main
