@@ -1,4 +1,4 @@
-/*const { toTitleCase } = require("../config/function");
+const { toTitleCase } = require("../config/function");
 const categoryModel = require("../models/categories");
 const fs = require("fs");
 
@@ -103,9 +103,9 @@ class Category {
 }
 
 const categoryController = new Category();
-module.exports = categoryController;*/
+module.exports = categoryController;
 
-const { toTitleCase } = require("../config/function");
+/*const { toTitleCase } = require("../config/function");
 const categoryModel = require("../models/categories");
 const fs = require("fs");
 
@@ -220,3 +220,4 @@ class Category {
 const categoryController = new Category();
 module.exports = categoryController;
 
+*/
