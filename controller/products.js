@@ -108,6 +108,76 @@ class Product {
       pImages,
     } = req.body;
     let editImages = req.files;
+  
+    // Validate other fields
+    if (
+      !pId ||
+      !pName ||
+      !pDescription ||
+      !pPrice ||
+      !pQuantity ||
+      !pCategory ||
+      !pOffer ||
+      !pStatus
+    ) {
+      return res.json({ error: "All fields must be required" });
+    }
+  
+    // Validate Name and description
+    if (pName.length > 255 || pDescription.length > 3000) {
+      return res.json({
+        error: "Name must be less than 255 characters & Description must be less than 3000 characters",
+      });
+    }
+  
+    // Validate Update Images
+    if (editImages && editImages.length === 1) {
+      Product.deleteImages(editImages, "file");
+      return res.json({ error: "Must provide 2 images" });
+    }
+  
+    let editData = {
+      pName,
+      pDescription,
+      pPrice,
+      pQuantity,
+      pCategory,
+      pOffer,
+      pStatus,
+    };
+  
+    if (editImages && editImages.length === 2) {
+      let allEditImages = [];
+      for (const img of editImages) {
+        allEditImages.push(img.filename);
+      }
+      editData = { ...editData, pImages: allEditImages };
+      Product.deleteImages(pImages.split(","), "string");
+    }
+  
+    try {
+      const editProduct = await productModel.findByIdAndUpdate(pId, editData, { new: true });
+      res.json({ success: "Product edited successfully", editProduct });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ error: "An error occurred while editing the product" });
+    }
+  }
+  
+
+  /*async postEditProduct(req, res) {
+    let {
+      pId,
+      pName,
+      pDescription,
+      pPrice,
+      pQuantity,
+      pCategory,
+      pOffer,
+      pStatus,
+      pImages,
+    } = req.body;
+    let editImages = req.files;
 
     // Validate other fileds
     if (
@@ -160,7 +230,7 @@ class Product {
         console.log(err);
       }
     }
-  }
+  }*/
 
   async getDeleteProduct(req, res) {
     let { pId } = req.body;
